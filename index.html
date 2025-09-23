@@ -3,34 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <title>Dumphard.fun</title>
+
+  <!-- Browser tab icon -->
+  <link rel="icon" type="image/jpeg" href="icon.jpg" />
+
   <style>
-    /* Easy knobs to tweak the button’s relative position */
-    :root{
-      --btn-left: 45%;  /* % from the left edge of the image */
-      --btn-top: 59%;   /* % from the top edge of the image  */
+    :root {
+      --btn-left: 45%;  /* % from left edge of image */
+      --btn-top: 56%;   /* % from top edge of image */
     }
 
     html, body {
       margin: 0;
       height: 100%;
-      background: black; /* page background outside the image */
+      background: black;
       font-family: Arial, sans-serif;
+      color: white;
     }
 
-    /* Frame centers the image area; image can grow up to 80% of viewport */
     .frame {
       width: 100vw; height: 100vh;
       display: flex; align-items: center; justify-content: center;
     }
 
-    /* Wrapper shrinks/grows exactly with the image; border around it */
     .img-wrap {
       position: relative;
       display: inline-block;
       border: 10px solid black;
     }
 
-    /* The image scales to fit within 80% of viewport, preserving aspect ratio */
     .img-wrap img {
       display: block;
       max-width: 100vw;
@@ -39,28 +40,66 @@
       width: auto;
     }
 
-    /* Button is positioned as a percentage of the image dimensions */
+    /* Main CTA button */
     .cta {
       position: absolute;
       left: var(--btn-left);
       top: var(--btn-top);
-      transform: translate(-50%, -50%); /* center button on that anchor point */
-      padding: 10px 30px;
+      transform: translate(-50%, -50%);
+      padding: 15px 30px;
       font-size: 1.1em;
       color: white;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.5);
       border: none; border-radius: 8px;
       cursor: pointer;
       transition: background 0.25s, color 0.25s;
     }
-    .cta:hover { background: rgba(245, 3, 3, 0.585); color: rgb(255, 255, 255); }
+    .cta:hover {
+      background: rgba(255, 0, 0, 0.4);
+      color: white;
+    }
+
+    /* Social links inside the image */
+    .links {
+      position: absolute;
+      bottom: 0;              
+      left: 50%;              
+      transform: translateX(-50%);
+      display: flex;          
+      gap: 20px;              
+      padding: 10px;          
+    }
+    .links a {
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      background: rgba(0,0,0,0.7);
+      border-radius: 6px;
+      transition: background 0.25s, color 0.25s;
+      white-space: nowrap;    
+    }
+    .links a:hover {
+      background: rgba(255, 179, 0, 0.4);
+      color: white;
+    }
   </style>
 </head>
 <body>
   <div class="frame">
     <div class="img-wrap">
       <img src="background.jpg" alt="Main visual" />
-      <button class="cta">Click Me</button>
+
+      <!-- Main button -->
+      <button class="cta" onclick="window.open('https://dexscreener.com/solana','_blank')">
+        Flush Me!
+      </button>
+
+      <!-- Links pinned to bottom -->
+      <div class="links">
+        <a href="https://t.me/+bpPAKNf6qF8yZDA1" target="_blank">Telegram</a>
+        <a href="https://x.com/dumparmy?s=21" target="_blank">X/Twitter</a>
+      </div>
     </div>
   </div>
 </body>
