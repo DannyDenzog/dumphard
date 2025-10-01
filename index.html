@@ -66,10 +66,18 @@
       left: 50%;              
       transform: translateX(-50%);
       display: flex;          
-      gap: 20px;              
+      flex-direction: column; /* Two rows */
+      gap: 10px;              
       padding: 10px;          
+      align-items: center;
     }
-    .links a {
+
+    .row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .links a, .links button {
       display: inline-block;
       padding: 10px 20px;
       text-decoration: none;
@@ -78,8 +86,11 @@
       border-radius: 6px;
       transition: background 0.25s, color 0.25s;
       white-space: nowrap;    
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
     }
-    .links a:hover {
+    .links a:hover, .links button:hover {
       background: rgba(255, 179, 0, 0.4);
       color: white;
     }
@@ -95,11 +106,30 @@
         Flush Me!
       </button>
     </div>  
-      <!-- Links pinned to bottom -->
-      <div class="links">
+
+    <!-- Links pinned to bottom -->
+    <div class="links">
+      <!-- Row 1 -->
+      <div class="row">
         <a href="https://t.me/+GQxGUH34AsQ3MmI1" target="_blank">Telegram</a>
         <a href="https://x.com/dumparmy?s=21" target="_blank">X/Twitter</a>
       </div>
+      <!-- Row 2 -->
+      <div class="row">
+        <button onclick="copyContract()"><Contract Address></button>
+      </div>
+    </div>
   </div>
+
+  <script>
+    function copyContract() {
+      const contract = "<Contract Address>"; // Replace with actual address
+      navigator.clipboard.writeText(contract).then(() => {
+        alert("Contract address copied to clipboard!");
+      }).catch(err => {
+        console.error("Failed to copy: ", err);
+      });
+    }
+  </script>
 </body>
 </html>
